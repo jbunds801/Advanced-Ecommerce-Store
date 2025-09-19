@@ -1,0 +1,8 @@
+@font-face {
+  font-family: Scriptina;
+  src: '../assets/fonts/SCRIPTIN.tff'
+}
+
+.nav-brand {
+  font-family: Scriptina;
+}

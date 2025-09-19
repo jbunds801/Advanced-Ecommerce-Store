@@ -1,0 +1,21 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #ab7b00;
+  background: linear-gradient(
+    200deg,
+    rgba(171, 123, 0, 1) 4%,
+    rgba(20, 15, 0, 1) 11%,
+    rgba(13, 9, 0, 1) 89%,
+    rgba(156, 113, 3, 1) 97%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* keeps the gradient fixed during scroll */
+  background-size: cover;
+}

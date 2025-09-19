@@ -1,0 +1,11 @@
+html,
+body,
+#root {
+  font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e6e6e6;
+  
+}
+
+h1, p {
+    font-weight: 100;
+}
