@@ -9,10 +9,10 @@ const NavBar: React.FC = () => {
         <>
             <div>
                 <Navbar expand="sm" data-bs-theme="dark" className="p-3 mb-4">
-                    <Navbar.Brand className='nav-brand fs-3 fw-lighter' href="/">Ecomm Store</Navbar.Brand>
+                    <Navbar.Brand className='nav-brand fs-2 fw-lighter' href="/">Ecomm Store</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav defaultActiveKey="/home">
+                        <Nav className='nav-link fw-lighter' defaultActiveKey="/home">
                             <Nav.Link as={Link} to="/">
                                 Home
                             </Nav.Link>

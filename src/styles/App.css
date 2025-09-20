@@ -5,17 +5,22 @@ body,
   margin: 0;
 }
 
-body {
+/* body {
   min-height: 100vh;
   background: #ab7b00;
   background: linear-gradient(
     200deg,
-    rgba(171, 123, 0, 1) 4%,
-    rgba(20, 15, 0, 1) 11%,
-    rgba(13, 9, 0, 1) 89%,
-    rgba(156, 113, 3, 1) 97%
+    #ad7c00 4%,
+    #140f00 11%,
+    #0d0900 89%,
+    #9c7103 97%
   );
   background-repeat: no-repeat;
-  background-attachment: fixed; /* keeps the gradient fixed during scroll */
+  background-attachment: fixed; 
   background-size: cover;
+} */ 
+
+
+body {
+  background-color: #191919;
 }

@@ -1,8 +1,25 @@
-@font-face {
+/* @font-face {
   font-family: Scriptina;
-  src: '../assets/fonts/SCRIPTIN.tff'
-}
+  src: "../assets/fonts/SCRIPTIN.tff";
+}*/
 
 .nav-brand {
-  font-family: Scriptina;
+  /* font-family: Scriptina; */
+  color: #e314ea;
 }
+
+.nav-link {
+  color: #868686;
+}
+
+.nav-link:hover {
+  color: rgb(151, 47, 248);
+}
+
+.nav-link:active {
+  color: #e314ea;
+}
+
+/* .nav-link.active {
+  color: #14b5ea;
+} */
