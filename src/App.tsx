@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/App.css';
 import Home from './pages/Home';
 import About from "./pages/About";
-import Account from "./pages/Account";
+import Cart from "./pages/Cart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageLayout from './components/PageLayout';
 import Products from "./pages/Products";
@@ -17,7 +17,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/products' element={<Products />} />
             <Route path='/about' element={<About />} />
-            <Route path='/account' element={<Account />} />
+            <Route path='/cart' element={<Cart />} />
           </Routes>
         </PageLayout>
       </BrowserRouter>

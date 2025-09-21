@@ -11,23 +11,23 @@ const ImageCarousel: React.FC = () => {
         queryFn: fetchProducts
     })
 
-
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading images: {(error as Error).message}</div>;
     if (!data || data.length === 0) return <div>No images available</div>;
 
-
     return (
-        <Carousel fade data-bs-theme="dark" controls={false} indicators={false}>
-            {data.map((product: Product) => (
-                <Carousel.Item key={product.id} interval={2500}>
-                    <img className='d-block mx-auto'
-                        src={product.image}
-                        alt={`slide image of ${product.title}`}
-                    />
-                </Carousel.Item>
-            ))}
-        </Carousel>
+        <>
+            <Carousel className="mt-5" fade data-bs-theme="dark" controls={false} indicators={false}>
+                {data.map((product: Product) => (
+                    <Carousel.Item key={product.id} interval={2500}>
+                        <img className='d-block mx-auto'
+                            src={product.image}
+                            alt={`slide image of ${product.title}`}
+                        />
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        </>
     );
 };
 

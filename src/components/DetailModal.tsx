@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import type { Product } from '../types/types'
 import ReactStars from 'react-rating-stars-component';
+import AddToCartButton from './AddToCartButton';
 
 type DetailModalProps = {
     product?: Product | null
@@ -11,8 +12,6 @@ type DetailModalProps = {
 
 const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
     if (!product) return null
-
-    console.log('DetailModal rating:', product.rating?.rate)
 
     return (
         <>
@@ -27,8 +26,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
                             src={product.image}
                             alt={product.title}
                         />
-                        <p className='p-1'>Price: ${product.price}</p>
-                        <div>
+                        <p className='pt-1 fs-5'>Price: ${product.price.toFixed(2)}</p>
+                        <div className='pb-4'>
                             <ReactStars
                                 count={5}
                                 value={product.rating?.rate ?? 0}
@@ -39,7 +38,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
                                 char="★"
                             />
                         </div>
-                        <p>{product.description}</p>
+                        <p className='fs-5'>{product.description}</p>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
@@ -47,13 +46,13 @@ const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
                         <Button variant="outline-info" onClick={onHide}>
                             Close
                         </Button>
-                        <Button variant="outline-info">Add to Cart</Button>
+                        <AddToCartButton product={product} />
                     </div>
                 </Modal.Footer>
             </Modal>
         </>
-    )
-}
+    );
+};
 
 export default DetailModal;
 

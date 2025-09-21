@@ -4,7 +4,6 @@ import ProductCard from '../components/ProductCard';
 
 const Products: React.FC = () => {
 
-
     return (
         <>
             <h1>hello again</h1>

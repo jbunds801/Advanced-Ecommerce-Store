@@ -4,6 +4,7 @@ import { fetchProducts } from "../query/api";
 import type { Product } from '../types/types'
 import { Button, Card, Col, Row, Container } from 'react-bootstrap'
 import DetailModal from './DetailModal'
+import AddToCartButton from './AddToCartButton';
 //import '../styles/ProductCard.css'
 
 const ProductCard: React.FC = () => {
@@ -18,7 +19,6 @@ const ProductCard: React.FC = () => {
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading images: {(error as Error).message}</div>;
     if (!data || data.length === 0) return <div>No images available</div>;
-
 
     return (
         <>
@@ -36,25 +36,28 @@ const ProductCard: React.FC = () => {
                                     }}
                                     data-bs-theme="dark">
                                     <div className='d-flex justify-content-center'>
-                                        <img style={{ width: '14rem', maxHeight: 250, objectFit: 'contain' }}
+                                        <img style={{ width: '14rem', minHeight: 250, maxHeight: 250, objectFit: 'contain' }}
                                             src={product.image}
                                             alt={`image of ${product.title}`}
                                         />
                                     </div>
                                     <Card.Body>
-                                        <Card.Title>
-                                            {product.title.length > 35
-                                                ? product.title.slice(0, 35) + '...'
-                                                : product.title}
-                                        </Card.Title>
-                                        <Card.Text>
-                                            {product.description.length > 50
-                                                ? product.description.slice(0, 50) + '...'
-                                                : product.description}
-                                        </Card.Text>
+                                        <div className='mt-4'>
+                                            <Card.Title>
+                                                {product.title.length > 30
+                                                    ? product.title.slice(0, 30) + '...'
+                                                    : product.title}
+                                            </Card.Title>
+                                            <Card.Text>
+                                                {product.description.length > 50
+                                                    ? product.description.slice(0, 50) + '...'
+                                                    : product.description}
+                                            </Card.Text>
+                                        </div>
                                         <div className='d-flex justify-content-center my-4 gap-3 position-absolute bottom-0'>
                                             <Button variant='outline-info' onClick={() => { setSelectedProduct(product); setShowModal(true); }}>Details</Button>
-                                            <Button variant='outline-info'>Add To Cart</Button>
+                                            <AddToCartButton product={product} />
+                                            {/* <Button variant='outline-info'>Add To Cart</Button> */}
                                         </div>
                                     </Card.Body>
                                 </Card>

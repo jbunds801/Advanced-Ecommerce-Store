@@ -7,15 +7,13 @@ export interface Product {
   image: string;
   rating?: {
     rate: number;
-    count: number;
+    count?: number;
   };
   quantity?: number;
 }
 
-export type Category = string;
-
-export interface User {
-  id?: string;
-  name: string;
-  email: string;
+export interface CartState {
+  cartItems: Product[];
 }
+
+export type Category = string;

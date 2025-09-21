@@ -1,9 +1,15 @@
 html,
 body,
 #root {
+  height: 100%;
+  margin: auto;
   font-family:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #e6e6e6;
   
+}
+
+body {
+  background-color: #191919;
 }
 
 h1, p {
