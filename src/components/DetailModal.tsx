@@ -4,11 +4,13 @@ import type { Product } from '../types/types'
 import ReactStars from 'react-rating-stars-component';
 import AddToCartButton from './AddToCartButton';
 
+
 type DetailModalProps = {
     product?: Product | null
     show: boolean
     onHide: () => void
 }
+
 
 const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
     if (!product) return null
@@ -46,7 +48,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
                         <Button variant="outline-info" onClick={onHide}>
                             Close
                         </Button>
-                        <AddToCartButton product={product} />
+                        <AddToCartButton product={product} onAdd={onHide} />
                     </div>
                 </Modal.Footer>
             </Modal>

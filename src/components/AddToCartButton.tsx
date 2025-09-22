@@ -5,19 +5,23 @@ import { addCartItem } from '../redux/cartSlice';
 import type { Product } from '../types/types';
 import { Button } from 'react-bootstrap';
 
+
 interface AddToCartButtonProps {
     product: Product;
+    onAdd?: () => void;
 }
 
-const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product, onAdd }) => {
     const dispatch = useDispatch<AppDispatch>();
 
     const handleAddToCart = () => {
         dispatch(addCartItem(product));
+        if (onAdd) onAdd();
     };
 
     return (
-        <Button variant='outline-info' onClick={handleAddToCart}>Add To Cart</Button>
+        <Button variant='outline-info' className='pulse'
+            onClick={handleAddToCart}>Add To Cart</Button>
     );
 };
 

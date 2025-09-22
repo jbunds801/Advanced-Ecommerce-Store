@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import NavBar from './NavBar';
 import '../styles/PageLayout.css'
 
+
 type PageLayoutProps = {
     children?: React.ReactNode;
 };

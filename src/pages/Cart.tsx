@@ -1,6 +1,7 @@
 import React from 'react';
 import CartItems from '../components/CartItems';
 
+
 const Account: React.FC = () => {
 
     return (

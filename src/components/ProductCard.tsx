@@ -5,11 +5,14 @@ import type { Product } from '../types/types'
 import { Button, Card, Col, Row, Container } from 'react-bootstrap'
 import DetailModal from './DetailModal'
 import AddToCartButton from './AddToCartButton';
+import AddedToCartModal from './AddedToCartModal';
 //import '../styles/ProductCard.css'
+
 
 const ProductCard: React.FC = () => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
     const [showModal, setShowModal] = useState(false)
+    const [showAddedModal, setShowAddedModal] = useState(false)
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
@@ -41,23 +44,20 @@ const ProductCard: React.FC = () => {
                                             alt={`image of ${product.title}`}
                                         />
                                     </div>
-                                    <Card.Body>
-                                        <div className='mt-4'>
-                                            <Card.Title>
-                                                {product.title.length > 30
-                                                    ? product.title.slice(0, 30) + '...'
-                                                    : product.title}
-                                            </Card.Title>
-                                            <Card.Text>
-                                                {product.description.length > 50
-                                                    ? product.description.slice(0, 50) + '...'
-                                                    : product.description}
-                                            </Card.Text>
-                                        </div>
+                                    <Card.Body className='mt-4'>
+                                        <Card.Title>
+                                            {product.title.length > 35
+                                                ? product.title.slice(0, 35) + '...'
+                                                : product.title}
+                                        </Card.Title>
+                                        <Card.Text>
+                                            {product.description.length > 50
+                                                ? product.description.slice(0, 50) + '...'
+                                                : product.description}
+                                        </Card.Text>
                                         <div className='d-flex justify-content-center my-4 gap-3 position-absolute bottom-0'>
                                             <Button variant='outline-info' onClick={() => { setSelectedProduct(product); setShowModal(true); }}>Details</Button>
-                                            <AddToCartButton product={product} />
-                                            {/* <Button variant='outline-info'>Add To Cart</Button> */}
+                                            <AddToCartButton product={product} onAdd={() => setShowAddedModal(true)} />
                                         </div>
                                     </Card.Body>
                                 </Card>
@@ -67,6 +67,7 @@ const ProductCard: React.FC = () => {
                 </Row>
             </Container>
             <DetailModal product={selectedProduct} show={showModal} onHide={() => setShowModal(false)} />
+            <AddedToCartModal show={showAddedModal} onClose={() => setShowAddedModal(false)} />
         </>
     );
 };
