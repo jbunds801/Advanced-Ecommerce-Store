@@ -4,13 +4,15 @@ import type { AppDispatch } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import type { RootState } from '../redux/store';
 import { Button, Row, Col, Container } from 'react-bootstrap';
-import { decreaseQuantity, increaseQuantity, removeCartItem } from '../redux/cartSlice';
+import { decreaseQuantity, increaseQuantity, removeCartItem, clearCart } from '../redux/cartSlice';
 
 
 const CartItems: React.FC = () => {
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const dispatch = useDispatch<AppDispatch>();
 
+    const totalItems = cartItems.reduce((sum, product) => sum + (product.quantity ?? 1), 0);
+    const totalPrice = cartItems.reduce((sum, product) => sum + product.price * (product.quantity ?? 1), 0);
 
     if (cartItems.length === 0) {
         return <h4>Cart is empty!</h4>;
@@ -33,16 +35,19 @@ const CartItems: React.FC = () => {
                         <Button variant='outline-info' size='sm'
                             onClick={() => dispatch(removeCartItem(product.id))}>X</Button>
                         <Col>
-                        <p className='text-info'>Quantity</p>
+                            <p className='text-info'>Quantity</p>
                             <Button variant='outline-none text-info'
                                 onClick={() => dispatch(increaseQuantity(product))}>+</Button>
                             <Button variant='outline-none text-info'
                                 onClick={() => dispatch(decreaseQuantity(product))}>-</Button>
                         </Col>
-
                     </Col>
                 </Row>
             ))}
+            <Button variant='outline-none text-info' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
+            <Button variant='outline-info' onClick={() => dispatch(clearCart())}>Checkout</Button>
+            <span>Total Items: {totalItems}</span>
+            <span>Total Price: {totalPrice.toFixed(2)} </span>
         </Container>
     );
 };

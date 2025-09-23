@@ -5,7 +5,7 @@ import type { Product } from '../types/types'
 import { Button, Card, Col, Row, Container } from 'react-bootstrap'
 import DetailModal from './DetailModal'
 import AddToCartButton from './AddToCartButton';
-//import AddedToCartModal from './AddedToCartModal';
+import AddedToCartAlert from './AddedToCartAlert';
 //import '../styles/ProductCard.css'
 
 
@@ -16,7 +16,7 @@ type ProductCardProps = {
 const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
     const [showModal, setShowModal] = useState(false)
-    //const [showAddedModal, setShowAddedModal] = useState(false)
+    const [showAddedModal, setShowAddedModal] = useState(false)
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
@@ -30,9 +30,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     if (!products && error) return <div>Error loading products: {(error as Error).message}</div>;
     if (!items || items.length === 0) return <div>No products available</div>;
 
+    console.log("showAddedModal", showAddedModal);
+
     return (
         <>
             <Container>
+                <AddedToCartAlert show={showAddedModal} onClose={() => setShowAddedModal(false)} />
                 <Row xs={1} md={2} lg={3} xl={3} xxl={4}>
                     {items.map((product: Product) => (
                         <Col key={product.id}
@@ -64,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
                                         </Card.Text>
                                         <div className='d-flex justify-content-center my-4 gap-3 position-absolute bottom-0'>
                                             <Button variant='outline-info' onClick={() => { setSelectedProduct(product); setShowModal(true); }}>Details</Button>
-                                            <AddToCartButton product={product} /* onAdd={() => setShowAddedModal(true)} */ />
+                                            <AddToCartButton product={product} onAdd={() => setShowAddedModal(true)} />
                                         </div>
                                     </Card.Body>
                                 </Card>
@@ -74,7 +77,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
                 </Row>
             </Container>
             <DetailModal product={selectedProduct} show={showModal} onHide={() => setShowModal(false)} />
-            {/* <AddedToCartModal show={showAddedModal} onClose={() => setShowAddedModal(false)} /> */}
         </>
     );
 };

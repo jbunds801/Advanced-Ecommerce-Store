@@ -27,7 +27,7 @@ const cartSlice = createSlice({
       );
     },
 
-    emptyCart: (state) => {
+    clearCart: (state) => {
       state.cartItems = [];
     },
 
@@ -38,7 +38,9 @@ const cartSlice = createSlice({
       }>
     ) => {
       const itemId = action.payload.id;
-      const itemToUpdate = state.cartItems.find((product) => product.id === itemId);
+      const itemToUpdate = state.cartItems.find(
+        (product) => product.id === itemId
+      );
       if (itemToUpdate) {
         itemToUpdate.quantity = (itemToUpdate.quantity ?? 0) + 1;
       }
@@ -51,7 +53,9 @@ const cartSlice = createSlice({
       }>
     ) => {
       const itemId = action.payload.id;
-      const itemToUpdate = state.cartItems.find((product) => product.id === itemId);
+      const itemToUpdate = state.cartItems.find(
+        (product) => product.id === itemId
+      );
       if (
         itemToUpdate &&
         typeof itemToUpdate.quantity === "number" &&
@@ -70,7 +74,7 @@ const cartSlice = createSlice({
 export const {
   addCartItem,
   removeCartItem,
-  emptyCart,
+  clearCart,
   increaseQuantity,
   decreaseQuantity,
 } = cartSlice.actions;
