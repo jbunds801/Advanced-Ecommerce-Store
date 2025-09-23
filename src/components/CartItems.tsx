@@ -4,7 +4,7 @@ import type { AppDispatch } from '../redux/store';
 import { useDispatch } from 'react-redux';
 import type { RootState } from '../redux/store';
 import { Button, Row, Col, Container } from 'react-bootstrap';
-import { removeCartItem } from '../redux/cartSlice';
+import { decreaseQuantity, increaseQuantity, removeCartItem } from '../redux/cartSlice';
 
 
 const CartItems: React.FC = () => {
@@ -18,8 +18,8 @@ const CartItems: React.FC = () => {
 
     return (
         <Container>
-            {cartItems.map((product) => (
-                <Row className='m-5' key={product.id}>
+            {cartItems.map((product, index) => (
+                <Row className='m-5' key={index}>
                     <Col lg={2}>
                         <img style={{ width: '6rem', minHeight: 150, maxHeight: 150, objectFit: 'contain' }} src={product.image}
                             alt={`image of ${product.title}`} />
@@ -27,10 +27,19 @@ const CartItems: React.FC = () => {
                     <Col className='my-auto'>
                         <h5>{product.title}</h5>
                         <p>${product.price.toFixed(2)}</p>
+                        <p>{product.quantity}</p>
                     </Col>
                     <Col className='mt-3'>
                         <Button variant='outline-info' size='sm'
                             onClick={() => dispatch(removeCartItem(product.id))}>X</Button>
+                        <Col>
+                        <p className='text-info'>Quantity</p>
+                            <Button variant='outline-none text-info'
+                                onClick={() => dispatch(increaseQuantity(product))}>+</Button>
+                            <Button variant='outline-none text-info'
+                                onClick={() => dispatch(decreaseQuantity(product))}>-</Button>
+                        </Col>
+
                     </Col>
                 </Row>
             ))}

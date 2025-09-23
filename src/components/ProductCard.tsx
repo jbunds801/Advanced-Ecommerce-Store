@@ -5,29 +5,36 @@ import type { Product } from '../types/types'
 import { Button, Card, Col, Row, Container } from 'react-bootstrap'
 import DetailModal from './DetailModal'
 import AddToCartButton from './AddToCartButton';
-import AddedToCartModal from './AddedToCartModal';
+//import AddedToCartModal from './AddedToCartModal';
 //import '../styles/ProductCard.css'
 
 
-const ProductCard: React.FC = () => {
+type ProductCardProps = {
+    products?: Product[];
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
     const [showModal, setShowModal] = useState(false)
-    const [showAddedModal, setShowAddedModal] = useState(false)
+    //const [showAddedModal, setShowAddedModal] = useState(false)
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
-        queryFn: fetchProducts
+        queryFn: fetchProducts,
+        enabled: !products // only fetch when no products prop
     })
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading images: {(error as Error).message}</div>;
-    if (!data || data.length === 0) return <div>No images available</div>;
+    const items: Product[] | undefined = products ?? data;
+
+    if (!products && isLoading) return <div>Loading...</div>;
+    if (!products && error) return <div>Error loading products: {(error as Error).message}</div>;
+    if (!items || items.length === 0) return <div>No products available</div>;
 
     return (
         <>
             <Container>
                 <Row xs={1} md={2} lg={3} xl={3} xxl={4}>
-                    {data.map((product: Product) => (
+                    {items.map((product: Product) => (
                         <Col key={product.id}
                             className='d-flex justify-content-center'>
                             <div>
@@ -57,7 +64,7 @@ const ProductCard: React.FC = () => {
                                         </Card.Text>
                                         <div className='d-flex justify-content-center my-4 gap-3 position-absolute bottom-0'>
                                             <Button variant='outline-info' onClick={() => { setSelectedProduct(product); setShowModal(true); }}>Details</Button>
-                                            <AddToCartButton product={product} onAdd={() => setShowAddedModal(true)} />
+                                            <AddToCartButton product={product} /* onAdd={() => setShowAddedModal(true)} */ />
                                         </div>
                                     </Card.Body>
                                 </Card>
@@ -67,7 +74,7 @@ const ProductCard: React.FC = () => {
                 </Row>
             </Container>
             <DetailModal product={selectedProduct} show={showModal} onHide={() => setShowModal(false)} />
-            <AddedToCartModal show={showAddedModal} onClose={() => setShowAddedModal(false)} />
+            {/* <AddedToCartModal show={showAddedModal} onClose={() => setShowAddedModal(false)} /> */}
         </>
     );
 };

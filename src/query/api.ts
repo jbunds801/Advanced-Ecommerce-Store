@@ -14,7 +14,7 @@ export async function fetchCategories() {
   return result.data;
 }
 
-export async function fetchCategoriesProducts(category: string) {
+export async function fetchProductsByCategory(category: string) {
   const result = await apiClient.get(`/products/category/${category}`);
   return result.data;
 }

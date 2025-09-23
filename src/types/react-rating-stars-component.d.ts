@@ -1,11 +1,3 @@
-// Type declaration for react-rating-stars-component (minimal)
-// Keeps the editor happy; no runtime effect.
-// eslint-disable @typescript-eslint/no-explicit-any
-/* Example use-cases:
-A small JS-only npm package without @types.
-A browser global provided by a script tag.
-Quick temporary fixes during migration. */
-
 declare module "react-rating-stars-component" {
   import type { ComponentType } from "react";
 
@@ -26,7 +18,8 @@ declare module "react-rating-stars-component" {
   export default ReactStars;
 }
 
-// icons (optional) - the library can accept React elements for icons
+// to get extra icons (optional) - the library can accept React elements for icons
+
 //npm i react-icons
 /* import { FaRegStar, FaStarHalfAlt, FaStar } from 'react-icons/fa'
 

@@ -1,7 +1,7 @@
-/* @font-face {
+@font-face {
   font-family: Scriptina;
   src: "../assets/fonts/SCRIPTIN.tff";
-}*/
+}
 
 .nav-bar {
   background-color: rgba(25, 25, 25, 0.7);
@@ -11,13 +11,14 @@
 }
 
 .nav-brand {
-  /* font-family: Scriptina; */
+  font-family: Scriptina;
+  font-size: 3rem;
   font-weight: lighter;
   color: #e314ea;
 }
 
 .nav-brand:hover {
-  font-size: 200rem;
+  font-size: 3.25rem;
   font-weight: normal;
   color: #914cff;
 }
@@ -27,13 +28,29 @@
   font-weight: lighter;
 }
 
-.nav-link:hover,
-.nav-brand:hover {
+.nav-link:hover {
   font-size: larger;
   font-weight: normal;
   color: #914cff;
 }
 
-.nav-link:active {
-  color: #e314ea;
+.nav-link:active,
+.nav-brand:active {
+  color: #0dcaf0;
+}
+
+.pulse {
+  animation: pulse 0.8s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

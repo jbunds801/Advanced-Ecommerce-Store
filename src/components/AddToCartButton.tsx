@@ -20,11 +20,9 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product, onAdd }) => 
     };
 
     return (
-        <Button variant='outline-info' className='pulse'
+        <Button variant='outline-info'
             onClick={handleAddToCart}>Add To Cart</Button>
     );
 };
 
 export default AddToCartButton;
-
-
