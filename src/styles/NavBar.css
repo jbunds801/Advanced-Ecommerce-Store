@@ -10,6 +10,15 @@
   box-shadow: 0 20px 16px rgba(25, 25, 25, 0.7);
 }
 
+@media screen and (max-width: 576px) {
+  .nav-bar {
+    background-color: rgba(25, 25, 25, 0.75);
+    border: none;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 20px 16px rgba(25, 25, 25, 0.75);
+  }
+}
+
 .nav-brand {
   font-family: Scriptina;
   font-size: 3rem;
@@ -24,7 +33,7 @@
 }
 
 .nav-link {
-  color: #868686;
+  color: #8f8f8f;
   font-weight: lighter;
 }
 
@@ -40,7 +49,7 @@
 }
 
 .pulse {
-  animation: pulse 0.8s ease;
+  animation: pulse 1s ease;
 }
 
 @keyframes pulse {

@@ -5,17 +5,28 @@ import { useDispatch } from 'react-redux';
 import type { RootState } from '../redux/store';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 import { decreaseQuantity, increaseQuantity, removeCartItem, clearCart } from '../redux/cartSlice';
-
+import CheckoutButton from './CheckoutButton';
 
 const CartItems: React.FC = () => {
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const dispatch = useDispatch<AppDispatch>();
+    const [checkoutComplete, setCheckoutComplete] = React.useState(false);
 
     const totalItems = cartItems.reduce((sum, product) => sum + (product.quantity ?? 1), 0);
     const totalPrice = cartItems.reduce((sum, product) => sum + product.price * (product.quantity ?? 1), 0);
 
+    React.useEffect(() => {
+        if (cartItems.length > 0 && checkoutComplete) setCheckoutComplete(false);
+    }, [cartItems.length, checkoutComplete]);
+
     if (cartItems.length === 0) {
-        return <h4>Cart is empty!</h4>;
+        return checkoutComplete ? (
+            <div>
+                <h4>Checkout Complete!</h4>
+            </div>
+        ) : (
+            <h4>Cart is empty!</h4>
+        );
     }
 
     return (
@@ -30,7 +41,7 @@ const CartItems: React.FC = () => {
                         <h5>{product.title}</h5>
                         <p>${product.price.toFixed(2)}</p>
                     </Col>
-                    <Col className='m-auto me-5' sm={6} md={1}>
+                    <Col className='m-auto me-1' sm={6} md={1}>
                         <p className='text-info text-center'>Quantity</p>
                         <div className='d-flex flex-nowrap justify-content-center align-items-center'>
                             <Button className='m-1' variant='outline-none text-info'
@@ -46,10 +57,26 @@ const CartItems: React.FC = () => {
                     </Col>
                 </Row>
             ))}
-            <Button variant='outline-none text-info' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
-            <span>Total Items: {totalItems}</span>
-            <span>Total Price: {totalPrice.toFixed(2)} </span>
-            <Button variant='outline-info' onClick={() => dispatch(clearCart())}>Checkout</Button>
+            <Row>
+                <Col className='d-flex justify-content-end' lg={10}>
+                    <div className='d-flex flex-column align-items-end me-5 mb-5'>
+                        <p className='mb-2'>Total Items: {totalItems}</p>
+                        <p className='mb-0'>Total Price: ${totalPrice.toFixed(2)}</p>
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={7} md={8} lg={6} xl={6}>
+                    <div className='d-flex justify-content-center me-5'>
+                        <Button className='d-none d-sm-block' variant='outline-none text-info' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
+                    </div>
+                </Col>
+                <Col xs={12} sm={5} md={4} lg={6} xl={6}>
+                    <div className='d-flex justify-content-center'>
+                        <CheckoutButton onSuccess={() => setCheckoutComplete(true)} />
+                    </div>
+                </Col>
+            </Row>
         </Container>
     );
 };
