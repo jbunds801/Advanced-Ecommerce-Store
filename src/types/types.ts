@@ -15,5 +15,3 @@ export interface Product {
 export interface CartState {
   cartItems: Product[];
 }
-
-export type Category = string;

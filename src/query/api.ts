@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { Product } from "../types/types";
 
 const apiClient = axios.create({
   baseURL: "https://fakestoreapi.com",
@@ -6,15 +7,15 @@ const apiClient = axios.create({
 
 export async function fetchProducts() {
   const result = await apiClient.get("/products");
-  return result.data;
+  return result.data as Product[];
 }
 
 export async function fetchCategories() {
   const result = await apiClient.get("/products/categories");
-  return result.data;
+  return result.data as string[];
 }
 
 export async function fetchProductsByCategory(category: string) {
   const result = await apiClient.get(`/products/category/${category}`);
-  return result.data;
+  return result.data as Product[];
 }

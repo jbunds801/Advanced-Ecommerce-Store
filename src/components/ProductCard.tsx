@@ -16,7 +16,7 @@ type ProductCardProps = {
 const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
     const [showModal, setShowModal] = useState(false)
-    const [showAddedModal, setShowAddedModal] = useState(false)
+    const [showAddedAlert, setShowAddedAlert] = useState(false)
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
@@ -30,12 +30,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     if (!products && error) return <div>Error loading products: {(error as Error).message}</div>;
     if (!items || items.length === 0) return <div>No products available</div>;
 
-    console.log("showAddedModal", showAddedModal);
-
+   
     return (
         <>
             <Container>
-                <AddedToCartAlert show={showAddedModal} onClose={() => setShowAddedModal(false)} />
+                <AddedToCartAlert show={showAddedAlert} onClose={() => setShowAddedAlert(false)} />
                 <Row xs={1} md={2} lg={3} xl={3} xxl={4}>
                     {items.map((product: Product) => (
                         <Col key={product.id}
@@ -60,14 +59,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
                                                 ? product.title.slice(0, 35) + '...'
                                                 : product.title}
                                         </Card.Title>
-                                        <Card.Text>
+                                        <Card.Text style={{ maxHeight: '3rem', overflow: 'hidden' }}>
                                             {product.description.length > 50
                                                 ? product.description.slice(0, 50) + '...'
                                                 : product.description}
                                         </Card.Text>
-                                        <div className='d-flex justify-content-center my-4 gap-3 position-absolute bottom-0'>
+                                        <div className='d-flex justify-content-between my-4 gap-4 position-absolute bottom-0'>
                                             <Button variant='outline-info' onClick={() => { setSelectedProduct(product); setShowModal(true); }}>Details</Button>
-                                            <AddToCartButton product={product} onAdd={() => setShowAddedModal(true)} />
+                                            <AddToCartButton product={product} onAdd={() => setShowAddedAlert(true)} />
                                         </div>
                                     </Card.Body>
                                 </Card>

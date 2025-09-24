@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Alert } from 'react-bootstrap'
 
 interface AddedToCartAlertProps {
@@ -8,21 +8,27 @@ interface AddedToCartAlertProps {
 
 const AddedToCartAlert: React.FC<AddedToCartAlertProps> = ({ show, onClose }) => {
 
+    useEffect(() => {
+        if (!show) return;
+        const t = setTimeout(() => onClose(), 1000);
+        return () => clearTimeout(t);
+    }, [show, onClose]);
+
     if (!show) return null;
 
     return (
         <>
-            <Alert variant='info'
+            <Alert
+                variant='info'
                 data-bs-theme="dark"
-                dismissible
                 onClose={onClose}
-                className="position-fixed top-25 start-50 translate-middle-x mt-3"
+                className="position-fixed start-50 translate-middle-x mt-3"
                 style={{ zIndex: 9999 }}
             >
                 Item Added!
             </Alert>
         </>
     );
-}
+};
 
 export default AddedToCartAlert;
