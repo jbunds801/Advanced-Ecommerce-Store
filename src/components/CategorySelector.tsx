@@ -22,7 +22,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({ onSetSelectedCatego
                     {categories && (
                         <div className='mt-3 d-flex flex-wrap justify-content-center'>
                             <span className='all-categories px-3'
-                                onClick={() => onSetSelectedCategory('')}>All Products</span>
+                                onClick={() => onSetSelectedCategory('')}>all products</span>
                             {categories.map((category: string) => (
                                 <span className='categories px-3'
                                     key={category}
