@@ -24,7 +24,7 @@ const Products: React.FC = () => {
 
     return (
         <>
-            <h1>hello again</h1>
+            <h1 className='text-center px-4 py-4'>Find your new favorites!</h1>
             <CategorySelector onSetSelectedCategory={setSelectedCategory} />
             <ProductCard products={selectedCategory ? productsByCategory : products} />
         </>

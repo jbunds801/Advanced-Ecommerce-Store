@@ -2,9 +2,10 @@ html,
 body,
 #root {
   height: 100%;
-  margin: auto;
+  margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #e6e6e6;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -19,3 +20,4 @@ p,
 span {
   font-weight: lighter;
 }
+

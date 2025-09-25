@@ -19,6 +19,13 @@
   }
 }
 
+@media screen and (max-width: 400px) {
+  .nav-brand {
+    font-size: 2.4rem !important;
+  }
+  
+}
+
 .nav-brand {
   font-family: Scriptina;
   font-size: 3rem;

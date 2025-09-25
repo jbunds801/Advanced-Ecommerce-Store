@@ -6,7 +6,7 @@ const Account: React.FC = () => {
 
     return (
         <>
-            <h1>hello is anybody out there</h1>
+            <h1 className='px-4 py-4'>Your shopping cart</h1>
             <CartItems />
         </>
     );

@@ -24,10 +24,11 @@ const NavBar: React.FC = () => {
     return (
         <>
             <div>
-                <Navbar fixed='top' expand="sm" data-bs-theme="dark" className="nav-bar p-3 ms-4 mb-4">
-                    <Navbar.Brand className='nav-brand pb-3' href="/">Ecomm Store</Navbar.Brand>
+                <Navbar fixed='top' expand="sm" data-bs-theme="dark" className="nav-bar p-3 mb-4">
+                    <div className="container-fluid mx-3">
+                        <Navbar.Brand className='nav-brand pb-3' href="/">Ecomm Store</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Collapse>
                         <Nav defaultActiveKey="/home">
                             <Nav.Link className='nav-link' as={Link} to="/">
                                 Home
@@ -51,7 +52,8 @@ const NavBar: React.FC = () => {
                                 )}
                             </Nav.Link>
                         </Nav>
-                    </Navbar.Collapse>
+                        </Navbar.Collapse>
+                    </div>
                 </Navbar>
             </div>
         </>

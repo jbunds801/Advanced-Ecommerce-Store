@@ -22,10 +22,10 @@ const CartItems: React.FC = () => {
     if (cartItems.length === 0) {
         return checkoutComplete ? (
             <div>
-                <h4>Checkout Complete!</h4>
+                <h4 className='px-4'>Checkout Complete! Thanks for shopping with us!</h4>
             </div>
         ) : (
-            <h4>Cart is empty!</h4>
+            <h4 className='px-4'>Cart is empty!</h4>
         );
     }
 
@@ -52,7 +52,7 @@ const CartItems: React.FC = () => {
                         </div>
                     </Col>
                     <Col md={2}>
-                        <Button className='m-5 d-none d-md-block' variant='outline-info' size='sm'
+                        <Button className='mt-4 mx-5 d-none d-md-block' variant='outline-info' size='sm'
                             onClick={() => dispatch(removeCartItem(product.id))}>X</Button>
                     </Col>
                 </Row>
