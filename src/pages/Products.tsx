@@ -9,6 +9,7 @@ import '../styles/Products.css'
 const Products: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
 
+    //uses useQuery to fetch data from the API
     const { data: products, isLoading } = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts
@@ -22,6 +23,7 @@ const Products: React.FC = () => {
 
     if (isLoading && !products) return <p>Loading...</p>;
 
+    //renders components with the fetched product and category data
     return (
         <>
             <h1 className='text-center px-4 py-4'>Find your new favorites!</h1>

@@ -11,7 +11,7 @@ type DetailModalProps = {
     onHide: () => void
 }
 
-
+//modal uses React Star ratings to show stars using rating data from API
 const DetailModal: React.FC<DetailModalProps> = ({ product, show, onHide }) => {
     if (!product) return null
 

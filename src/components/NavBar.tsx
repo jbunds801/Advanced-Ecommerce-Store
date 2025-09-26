@@ -15,6 +15,8 @@ const NavBar: React.FC = () => {
         0
     );
 
+    //effect to show cart count in real time next to Cart nav link below with
+    //styling in separate CSS file
     useEffect(() => {
         if (cartItems.length > 0) {
             setIsPulsing(true);
@@ -27,31 +29,31 @@ const NavBar: React.FC = () => {
                 <Navbar fixed='top' expand="sm" data-bs-theme="dark" className="nav-bar p-3 mb-4">
                     <div className="container-fluid mx-3">
                         <Navbar.Brand className='nav-brand pb-3' href="/">Ecomm Store</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse>
-                        <Nav defaultActiveKey="/home">
-                            <Nav.Link className='nav-link' as={Link} to="/">
-                                Home
-                            </Nav.Link>
-                            <Nav.Link className='nav-link' as={Link} to="/products">
-                                Products
-                            </Nav.Link>
-                            <Nav.Link className='nav-link' as={Link} to="/about">
-                                About
-                            </Nav.Link>
-                            <Nav.Link className='nav-link' as={Link} to="/cart">
-                                Cart
-                                {cartItems.length > 0 && (
-                                    <>
-                                        <Badge pill bg="none" text='info'
-                                            className={isPulsing ? 'pulse' : ''}
-                                            onAnimationEnd={() => setIsPulsing(false)}
-                                        >{itemCount}</Badge>
-                                        <span className="visually-hidden">cart count</span>
-                                    </>
-                                )}
-                            </Nav.Link>
-                        </Nav>
+                            <Nav defaultActiveKey="/home">
+                                <Nav.Link className='nav-link' as={Link} to="/">
+                                    Home
+                                </Nav.Link>
+                                <Nav.Link className='nav-link' as={Link} to="/products">
+                                    Products
+                                </Nav.Link>
+                                <Nav.Link className='nav-link' as={Link} to="/about">
+                                    About
+                                </Nav.Link>
+                                <Nav.Link className='nav-link' as={Link} to="/cart">
+                                    Cart
+                                    {cartItems.length > 0 && (
+                                        <>
+                                            <Badge pill bg="none" text='info'
+                                                className={isPulsing ? 'pulse' : ''}
+                                                onAnimationEnd={() => setIsPulsing(false)}
+                                            >{itemCount}</Badge>
+                                            <span className="visually-hidden">cart count</span>
+                                        </>
+                                    )}
+                                </Nav.Link>
+                            </Nav>
                         </Navbar.Collapse>
                     </div>
                 </Navbar>

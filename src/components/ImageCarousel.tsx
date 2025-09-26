@@ -7,6 +7,7 @@ import type { Product } from '../types/types'
 
 const ImageCarousel: React.FC = () => {
 
+    //useQuery is used to fetch product data from API
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts

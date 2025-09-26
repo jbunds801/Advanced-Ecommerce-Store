@@ -29,6 +29,7 @@ const CartItems: React.FC = () => {
         );
     }
 
+    //quantity counter using dispatch and reducers below, imports CheckoutButton to simulate checkout
     return (
         <Container>
             {cartItems.map((product, index) => (

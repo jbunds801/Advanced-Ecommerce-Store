@@ -9,6 +9,8 @@ type CheckoutButtonProps = {
     onSuccess?: () => void;
 };
 
+//separate component for check out function for future uses where
+//a checkout button might exsist other places.
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({ onSuccess }) => {
     const dispatch = useDispatch<AppDispatch>();
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);

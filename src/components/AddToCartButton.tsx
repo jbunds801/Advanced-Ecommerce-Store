@@ -11,6 +11,7 @@ interface AddToCartButtonProps {
     onAdd?: () => void;
 }
 
+//uses dispatch to set state of cart, showing items that have been added
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product, onAdd }) => {
     const dispatch = useDispatch<AppDispatch>();
 

@@ -12,11 +12,3 @@ const About: React.FC = () => {
 }
 
 export default About;
-
-
-
-{/* <p>
-    We are a family of luthiers dedicated to making some of the finest
-    contemporary classical instruments, as well as specializing in curating
-    a fine selection of antique instruments from all over the world.
-</p> */}

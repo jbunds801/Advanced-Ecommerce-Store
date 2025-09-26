@@ -10,11 +10,13 @@ type CategorySelectorProps = {
 
 const CategorySelector: React.FC<CategorySelectorProps> = ({ onSetSelectedCategory }) => {
 
+    //useQuery to fetch category data
     const { data: categories } = useQuery({
         queryKey: ['categories'],
         queryFn: fetchCategories
     })
 
+    //function to filter products from the returned data
     return (
         <>
             <Container>

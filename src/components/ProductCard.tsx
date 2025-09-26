@@ -18,10 +18,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     const [showModal, setShowModal] = useState(false)
     const [showAddedAlert, setShowAddedAlert] = useState(false)
 
+
+    //useQuery to fetch product data and display 
     const { data, isLoading, error } = useQuery({
         queryKey: ['products'],
         queryFn: fetchProducts,
-        enabled: !products // only fetch when no products prop
+        enabled: !products // only fetch when there are no products prop
     })
 
     const items: Product[] | undefined = products ?? data;
@@ -30,7 +32,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ products }) => {
     if (!products && error) return <div>Error loading products: {(error as Error).message}</div>;
     if (!items || items.length === 0) return <div>No products available</div>;
 
-   
+   //maps over products to display each one in a card
+   //styling added to keep cards the same size and content contained within.
     return (
         <>
             <Container>
