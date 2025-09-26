@@ -1,69 +1,25 @@
-# React + TypeScript + Vite
+# Advanced Ecommerce Store using React, TypeScript, and Redux, and Tanstack.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project focuses on Redux Toolkit and to use actions and reducers to keep state management in one place, making it resuable across components. TypeScript was also used to ensure type saftey. Bootstrap was used as much as possible to keep the styling simple and responsive yet attractive. 
 
-Currently, two official plugins are available:
+## Key features 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-Shopping cart is remembered in session storage using Redux Persist.
+-Functionality to show that items were added to or removed from the cart with a counter next to the Cart link in the navbar, updating the cart count in real time.
+-Functionality to filter categories from API.
+-A details modal that also uses data from the API to show the star rating of an item and the ability to add to cart from the modal.
+-Cart has functionality to increase or decrease quantity of an item, or remove it, or clear the cart entirely.
+-Cart has a simulated check out function.
+-Created a carousel from the API to disply products on the homescreen.
+-Styling is simple and clean, yet attractive.
+-Used Bootstraps Container, Flexbox, and other Bootstrap classes to make all pages and components responsive.
+-Separate components for things that are used in different places, including the Add To Cart button, Check Out button, and the Category Selector function to keep code clean and organized.
+-Deployed on Netlify - https://advanced-ecomm-store-jbunds.netlify.app/
 
-## Expanding the ESLint configuration
+# How to run this application in VSCode:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-install all dependencies:
+  -npm install react react-dom react-bootstrap bootstrap redux react-redux @reduxjs/toolkit @tanstack/react-query redux-persist react-star-ratings
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-npm run dev
+  -Click link to open in browser.
