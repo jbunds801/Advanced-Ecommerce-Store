@@ -66,10 +66,10 @@ const CartItems: React.FC = () => {
                     </div>
                 </Col>
             </Row>
-            <Row>
+            <Row className='mb-5'>
                 <Col sm={7} md={8} lg={6} xl={6}>
                     <div className='d-flex justify-content-center me-5'>
-                        <Button className='d-none d-sm-block' variant='outline-none text-info' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
+                        <Button className='d-none d-sm-block' variant='outline-none text-danger' onClick={() => dispatch(clearCart())}>Clear Cart</Button>
                     </div>
                 </Col>
                 <Col xs={12} sm={5} md={4} lg={6} xl={6}>

@@ -46,7 +46,7 @@ const NavBar: React.FC = () => {
                                     {cartItems.length > 0 && (
                                         <>
                                             <Badge pill bg="none" text='info'
-                                                className={isPulsing ? 'pulse' : ''}
+                                                className={`ms-1${isPulsing ? ' pulse' : ''}`}
                                                 onAnimationEnd={() => setIsPulsing(false)}
                                             >{itemCount}</Badge>
                                             <span className="visually-hidden">cart count</span>

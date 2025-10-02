@@ -1,3 +1,7 @@
+:root {
+  --bs-danger-rgb: 227, 20, 234;
+}
+
 html,
 body,
 #root {
@@ -14,10 +18,12 @@ body {
 }
 
 h1,
+h2,
+h3,
 h4,
 h5,
+h6,
 p,
 span {
   font-weight: lighter;
 }
-

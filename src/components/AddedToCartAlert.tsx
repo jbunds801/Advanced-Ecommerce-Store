@@ -18,11 +18,11 @@ const AddedToCartAlert: React.FC<AddedToCartAlertProps> = ({ show, onClose }) =>
 
     return (
         <>
-            <Alert
+            <Alert 
                 variant='info'
                 data-bs-theme="dark"
                 onClose={onClose}
-                className="position-fixed start-50 translate-middle-x mt-3"
+                className="position-fixed start-50 translate-middle-x mt-3 d-sm-none d-xs-block"
                 style={{ zIndex: 9999 }}
             >
                 Item Added!
