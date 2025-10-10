@@ -19,7 +19,7 @@ This project focuses on Redux Toolkit and to use actions and reducers to keep st
 # How to run this application in VSCode:
 
 -install all dependencies:
-  -npm install react react-dom react-bootstrap bootstrap redux react-redux @reduxjs/toolkit @tanstack/react-query redux-persist react-star-ratings
+  -npm install 
 
 -npm run dev
   -Click link to open in browser.
