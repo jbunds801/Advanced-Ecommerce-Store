@@ -36,8 +36,8 @@ const NavBar: React.FC = () => {
                 >
                     <div className="container-fluid mx-3">
                         <Navbar.Brand className='nav-brand pb-3' href="/">Ecomm Store</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse>
+                        <Navbar.Toggle aria-controls="navbar-menu" />
+                        <Navbar.Collapse id="navbar-menu">
                             <Nav defaultActiveKey="/home">
                                 <Nav.Link className='nav-link' as={Link} to="/" onClick={() => setExpanded(false)}>
                                     Home
