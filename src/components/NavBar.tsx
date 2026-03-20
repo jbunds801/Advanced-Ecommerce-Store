@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 const NavBar: React.FC = () => {
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const [isPulsing, setIsPulsing] = useState(false);
+    const [expanded, setExpanded] = useState(false);
 
     const itemCount = cartItems.reduce(
         (total, product) => total + (product.quantity ?? 1),
@@ -26,22 +27,28 @@ const NavBar: React.FC = () => {
     return (
         <>
             <div>
-                <Navbar fixed='top' expand="sm" data-bs-theme="dark" className="nav-bar p-3 mb-4">
+                <Navbar fixed='top'
+                    expand="sm"
+                    data-bs-theme="dark"
+                    className="nav-bar p-3 mb-4"
+                    expanded={expanded}
+                    onToggle={(isOpen) => setExpanded(!!isOpen)}
+                >
                     <div className="container-fluid mx-3">
                         <Navbar.Brand className='nav-brand pb-3' href="/">Ecomm Store</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse>
                             <Nav defaultActiveKey="/home">
-                                <Nav.Link className='nav-link' as={Link} to="/">
+                                <Nav.Link className='nav-link' as={Link} to="/" onClick={() => setExpanded(false)}>
                                     Home
                                 </Nav.Link>
-                                <Nav.Link className='nav-link' as={Link} to="/products">
+                                <Nav.Link className='nav-link' as={Link} to="/products" onClick={() => setExpanded(false)}>
                                     Products
                                 </Nav.Link>
-                                <Nav.Link className='nav-link' as={Link} to="/about">
+                                <Nav.Link className='nav-link' as={Link} to="/about" onClick={() => setExpanded(false)}>
                                     About
                                 </Nav.Link>
-                                <Nav.Link className='nav-link' as={Link} to="/cart">
+                                <Nav.Link className='nav-link' as={Link} to="/cart" onClick={() => setExpanded(false)}>
                                     Cart
                                     {cartItems.length > 0 && (
                                         <>
